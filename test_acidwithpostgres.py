@@ -3,8 +3,6 @@ import datetime
 import unittest
 import time
 
-from sqlalchemy.exc import DBAPIError
-from testcontainers.core.waiting_utils import wait_for_logs, wait_container_is_ready
 from testcontainers.postgres import PostgresContainer
 import psycopg
 
@@ -124,8 +122,7 @@ class AcidWithPostgresTestCase(unittest.TestCase):
             psycopg.connect(self.connection_uri())
         
         container.start()
-        wait_container_is_ready(*[DBAPIError])
-        wait_for_logs(self.postgres, "LOG:  database system is ready to accept connections")
+        self.postgres._connect()
 
         with psycopg.connect(self.connection_uri()) as conn:
             with conn.cursor() as cur:
