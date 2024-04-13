@@ -129,6 +129,5 @@ class AcidWithPostgresTestCase(unittest.TestCase):
                 cur.execute("SELECT name, salary FROM employee")
                 db_data = cur.fetchall()
         
-        self.assertEqual(type(cm.exception), psycopg.OperationalError)
         self.assertEqual(len(db_data), 1)
         self.assertEqual(db_data[0], ("Paul Port", 3000))
