@@ -2,6 +2,11 @@
 
 Testes para explicar as propriedades do A.C.I.D.
 
+## Requisitos
+
+- [Python](https://www.python.org/)
+- Container runtime suportado pelo [Testcontainers](https://testcontainers.com/)
+
 ## Configurando o ambiente
 
 ```console
