@@ -1,0 +1,17 @@
+name: Push for run tests
+
+on: push 
+
+jobs:
+  unit-testing:
+    runs-on: ubuntu-latest 
+    
+    steps:
+    - name : Checkout project
+      uses : actions/checkout@v2
+      
+    - name : Install Packages 
+      run : pip install -r requirements.txt
+      
+    - name : Run tests 
+      run : python -m unittest
